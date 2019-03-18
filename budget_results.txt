@@ -1,0 +1,7 @@
+Financial Analysis 
+ ---------------- 
+Total Months: 86
+Total: 38382578.0
+Average Change Profit/Loss: -2315
+Largest Increase in Revenue: 12-Jan 1926159.0 
+Largest Decrease in Revenue: 13-Aug -2196167.0
