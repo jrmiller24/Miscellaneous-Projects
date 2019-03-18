@@ -27,10 +27,6 @@ with open(raw_csv_data) as csvfile:
     print("Total Profit/Loss $",sum(profitloss))
     print("Total Months",len(date))
 
-# Define Total Months and Profit/Loss
-Total_Months = date.append(row[0]) 
-Total_Profit_Loss = profitloss.append(float(row[1]))  
-
 # For Loop equaling average, min, max Total Profit/Loss 
 for i in range(1,len(profitloss)):
     change_in_profitloss.append(profitloss[i] - profitloss[i-1])
@@ -39,11 +35,23 @@ for i in range(1,len(profitloss)):
     minimum_profitloss = min(change_in_profitloss)
     max_profitloss_date = str(date[change_in_profitloss.index(max(change_in_profitloss))])
     min_profitloss_date = str(date[change_in_profitloss.index(min(change_in_profitloss))])
-
+print(max_profitloss_date)
 # Print Average, Minimum, Maximum Total Profit/Loss
 print("Average Change Profit/Loss $", round(average_change_in_profitloss))
 print("Largest Increase in Revenue:", max_profitloss_date,"($", maximum_profitloss,")")
-print("Smallest Increase in Revenue:", min_profitloss_date,"($", minimum_profitloss,")")
+print("Largest Decrease in Revenue:", min_profitloss_date,"($", minimum_profitloss,")")
+
+# F-String to print text file of results
+maxim = (f"{max_profitloss_date} {maximum_profitloss}")
+minim = (f"{min_profitloss_date} {minimum_profitloss}")
+budget=(f"Financial Analysis \n ---------------- \nTotal Months: {len(date)}\nTotal: {sum(profitloss)}\nAverage Change Profit/Loss: {round(sum(change_in_profitloss)/len(change_in_profitloss))}\nLargest Increase in Revenue: {maxim} \nLargest Decrease in Revenue: {minim}")
+
+print(budget)
+
+budget_results = open("budget_results.txt", "w")
+budget_results.write(budget)
+budget_results.close()
+
 
 
 
