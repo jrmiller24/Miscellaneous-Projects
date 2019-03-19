@@ -30,60 +30,61 @@ with open(raw_poll_data) as csvfile:
     # Complete list of candidates
         total_candidates_running.add(row[2])
 
+# Total number of votes each candidate received
+    list_of_candidates = list(total_candidates_running)
 
-    # Total number of votes each candidate received
-        list_of_candidates = list(total_candidates_running)
+    z = Counter(candidate).items()
 
-        z = Counter('candidate').items()
+    # Convert counter printout to list
+    candidate = list(z)
 
-        # Convert counter printout to list
-        candidate = list(z)
+     # List of votes for each candidate
+    Kahn = candidate[0]
+    Correy = candidate[1]
+    Li = candidate[2]
+    O_Tooley = candidate[3]
 
-        # List of votes for each candidate
-        Kahn = candidate[0]
-        Correy = candidate[1]
-        Li = candidate[2]
-        O_Tooley = candidate[3]
+    Kahn_list = list(Kahn)
+    Correy_list = list(Correy)
+    Li_list = list(Li)
+    O_Tooley_list = list(O_Tooley)
 
-        Kahn_list = list(Kahn)
-        Correy_list = list(Correy)
-        Li_list = list(Li)
-        O_Tooley_list = list(O_Tooley)
+    # Separate votes from each candidate name
 
-        # Separate votes from each candidate name
+    Kahn_votes = Kahn_list[1]
+    Correy_votes = Correy_list[1]
+    Li_votes = Li_list[1]
+    O_Tooley_votes = O_Tooley_list[1]
 
-        Kahn_votes = Kahn_list[1]
-        Correy_votes = Correy_list[1]
-        Li_votes = Li_list[1]
-        O_Tooley_votes = O_Tooley_list[1]
+    # Percentage of votes each candidate received
 
-        # Percentage of votes each candidate received
+    Kahn_count = (Kahn_votes/total_votes)
+    Kahn_percentage = format(Kahn_count, ".3%")
 
-        Kahn_count = (Kahn_votes/total_votes)
-        Kahn_percentage = format(Kahn_count, ".3%")
+    Correy_count = (Correy_votes/total_votes)
+    Correy_percentage = format(Correy_count, ".3%")
 
-        Correy_count = (Correy_votes/total_votes)
-        Correy_percentage = format(Correy_count, ".3%")
+    Li_count = (Li_votes/total_votes)
+    Li_percentage = format(Li_count, ".3%")
 
-        Li_count = (Li_votes/total_votes)
-        Li_percentage = format(Li_count, ".3%")
+    O_Tooley_count = (O_Tooley_votes/total_votes)
+    O_Tooley_percentage = format(O_Tooley_count, ".3%")
 
-        O_Tooley_count = (O_Tooley_votes/total_votes)
-        O_Tooley_percentage = format(O_Tooley_count, ".3%")
+    # Define variables for f string
+    kahn_text = (f"Kahn {Kahn_percentage} {Kahn_votes}")
+    correy_text = (f"Correy {Correy_percentage}  {Correy_votes}")
+    li_text = (f"Li {Li_percentage}  {Li_votes}")
+    o_tooley_text = (f"O'Tooley {O_Tooley_percentage}  {O_Tooley_votes}")
 
-        # Define variables for f string
-        kahn_text = (f"Kahn {Kahn_votes}{Kahn_percentage}")
-        correy_text = (f"Correy {Correy_votes}{Correy_percentage}")
-        li_text = (f"Li {Li_votes}{Li_percentage}")
-        o_tooley_text = (f"O'Tooley {O_Tooley_votes}{O_Tooley_percentage}")
+    # Winning Candidate given polling data
 
-        # Winning Candidate given polling data
+    results=(f"Election Results \n---------------\nTotal Votes: {total_votes}\n{kahn_text}\n{correy_text}\n{li_text}\n{o_tooley_text}\n-----------\nWinner: Kahn\n------------")
 
-        election_results = open("election_results.txt", "w")
-        election_results.write(f"Election Results \n---------------\n{kahn_text}\n{correy_text}\n{li_text}\n{o_tooley_text}\n-----------\nWinner: Kahn\n------------")
+    print(results)
 
-        election_results.close()
-
+    election_results = open("election_results.txt", "w")
+    election_results.write(results)
+    election_results.close()
 
 
 
